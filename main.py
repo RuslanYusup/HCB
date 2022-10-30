@@ -2,7 +2,7 @@ import extract
 import transform
 import features_create
 import ml_train
-import score_estimation
+import score
 
 
 """
@@ -21,5 +21,5 @@ Main script mor implementing ETL process
     train, test, buro = features_create.new_feature(train, df_test, buro)
     train, test = ml_train.prepare_data_model(train, test, buro)
     predict, model = ml_train.model_fit(train, test, target)
-    score_estimation.accuracy_score(predict, target)
-    score_estimation.shape_ml(model, train, test)
+    score.accuracy_score(predict, target)
+    score.shape_ml(model, train, test)
