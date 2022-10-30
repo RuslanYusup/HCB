@@ -18,10 +18,11 @@ def prepare_data_model(train, test, buro): #обязательно ли проп
 
     return train_b, test_b
 
-def model_fit(train_b, test_b, target):
+def model_fit(train, test, target):
+    # в общем анализе разделял тесты и трайн, чтобы не запутаться,ты говорил, что это не важно
     model = LGBMClassifier(objective="binary")
-    model.fit(train_b, target, categorical_feature=cat)
-    predict = model.predict_proba(test_b)[:, 1]
+    model.fit(train, target, categorical_feature=cat)
+    predict = model.predict_proba(test)[:, 1]
 
-    return predict
+    return predict, model
 

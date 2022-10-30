@@ -20,5 +20,6 @@ Main script mor implementing ETL process
     target, train = transform.create_train(df_train)
     train, test, buro = features_create.new_feature(train, df_test, buro)
     train, test = ml_train.prepare_data_model(train, test, buro)
-    predict = ml_train.model_fit(train_b, test_b, target)
+    predict, model = ml_train.model_fit(train, test, target)
     score_estimation.accuracy_score(predict, target)
+    score_estimation.shape_ml(model, train, test)
